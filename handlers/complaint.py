@@ -12,7 +12,7 @@ class ComplaintFSM(StatesGroup):
     complaint = State()
 
 
-@complaint_router.message(F.text == "/complaint")  # Используем F.text для фильтрации
+@complaint_router.message(F.text == "/complaint")
 async def start_complaint(message: types.Message, state: FSMContext):
     await message.answer("Как вас зовут?")
     await state.set_state(ComplaintFSM.name)
